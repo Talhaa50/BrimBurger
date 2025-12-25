@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eggspectation - Premium Breakfast & Brunch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Premium Breakfast Brand Colors */
+            --primary-dark: #1a1a1a;
+            --primary-light: #f8f7f5;
+            --accent-gold: #d4af37;
+            --accent-cream: #ede7d9;
+            --accent-terracotta: #c17a6b;
+            --text-dark: #2c2c2c;
+            --text-light: #f5f5f5;
+            --border-light: #e8e3da;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Lora', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f7f5 0%, #ede7d9 50%, #f8f7f5 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-light);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .brand-line {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+        }
+
+        .logo-text {
+            font-size: 42px;
+            font-weight: 800;
+            font-family: 'Montserrat', serif;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .logo-sub {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .location {
+            font-size: 12px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* TITLE SECTION */
+        .menu-title {
+            text-align: center;
+            padding: 35px 30px 25px;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f7f5 100%);
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .menu-title h1 {
+            font-size: 28px;
+            font-family: 'Montserrat', serif;
+            color: var(--text-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .menu-subtitle {
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--accent-terracotta);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 70px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 14px auto 0;
+            border-radius: 999px;
+        }
+
+        /* CONTENT */
+        .menu-content {
+            padding: 35px 30px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-title-strip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #c9a027 100%);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .category-title-strip span.icon {
+            font-size: 18px;
+        }
+
+        .category-block {
+            border-radius: 16px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fafaf8 0%, #f5f5f0 100%);
+            border: 1.5px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .category-heading {
+            font-size: 13px;
+            color: var(--accent-terracotta);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .menu-item {
+            margin-bottom: 16px;
+            padding: 14px 14px 12px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(193, 122, 107, 0.03) 100%);
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: 0.3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .item-description {
+            font-size: 12px;
+            color: #666;
+            margin-top: 3px;
+            font-family: 'Lora', serif;
+            line-height: 1.4;
+        }
+
+        .item-price {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--accent-gold);
+            white-space: nowrap;
+            margin-left: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .note {
+            font-size: 11px;
+            color: #999;
+            margin-top: 6px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 20px;
+            max-width: 480px;
+            width: 92%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-light);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .modal-close-btn:hover {
+            background: var(--accent-gold);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .modal-image-placeholder {
+            width: 100%;
+            height: 260px;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            border: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 13px;
+            text-align: center;
+            background: linear-gradient(135deg, #fafaf8 0%, #f5f5f0 100%);
+            overflow: hidden;
+        }
+
+        .modal-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .modal-price {
+            font-size: 20px;
+            color: var(--accent-gold);
+            font-weight: 800;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .modal-description {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            font-family: 'Lora', serif;
+        }
+
+        .modal-meta {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 20px 30px 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid var(--border-light);
+            background: linear-gradient(135deg, #fafaf8 0%, #f5f5f0 100%);
+        }
+
+        .footer strong {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                border-radius: 16px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .logo-text {
+                font-size: 32px;
+            }
+
+            .menu-title h1 {
+                font-size: 22px;
+            }
+
+            .menu-content {
+                padding: 24px 18px;
+            }
+
+            .menu-item {
+                padding: 12px 12px 10px;
+            }
+
+            .item-name {
+                font-size: 14px;
+            }
+
+            .item-price {
+                font-size: 13px;
+            }
+
+            .modal-content {
+                padding: 20px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            .menu-title h1 {
+                font-size: 20px;
+            }
+        }
+
+        /* ANIMATION */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-gold);
+            border-radius: 999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-terracotta);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="brand-line">Premium Breakfast & Brunch</div>
+        <div class="logo-text">Eggspectation</div>
+        <div class="logo-sub">Where Every Breakfast is an Experience</div>
+        <div class="location">Gulberg & DHA, Lahore · International Breakfast Menu</div>
+    </div>
+
+    <!-- TITLE -->
+    <div class="menu-title">
+        <h1>MORNING MENU</h1>
+        <div class="divider"></div>
+        <p class="menu-subtitle">Tap a dish to view details & savor the experience</p>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="menu-content">
+
+        <!-- Breakfast Signatures -->
+        <div class="category">
+            <div class="category-title-strip">
+                <span class="icon">🍳</span>
+                <span>SIGNATURE BREAKFAST</span>
+            </div>
+            <div class="category-block">
+                <div class="category-heading">Signature Dishes</div>
+
+                <div class="menu-item" onclick="openModal('omelette')">
+                    <div class="item-info">
+                        <div class="item-name">Fluffy Herb Omelette</div>
+                        <div class="item-description">Three-egg omelette with fresh herbs, cheese & truffle oil</div>
+                    </div>
+                    <div class="item-price">Rs. 850</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('pepperonicheese')">
+                    <div class="item-info">
+                        <div class="item-name">Pepperoni & Cheese Stack</div>
+                        <div class="item-description">Crispy pepperoni, melted mozzarella, on toasted sourdough</div>
+                    </div>
+                    <div class="item-price">Rs. 790</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('mushroom')">
+                    <div class="item-info">
+                        <div class="item-name">Mushroom Medley Scramble</div>
+                        <div class="item-description">Mixed mushrooms, garlic butter, cream & fresh herbs</div>
+                    </div>
+                    <div class="item-price">Rs. 720</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('pakostri')">
+                    <div class="item-info">
+                        <div class="item-name">Pako Stri - Chef's Special</div>
+                        <div class="item-description">Crispy toast, caramelized onions, aged cheddar & herbs</div>
+                    </div>
+                    <div class="item-price">Rs. 880</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('bruschetta')">
+                    <div class="item-info">
+                        <div class="item-name">Bruschetta Parisienne</div>
+                        <div class="item-description">Artisan bread, heirloom tomatoes, basil pesto & burrata</div>
+                    </div>
+                    <div class="item-price">Rs. 695</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Premium Selections -->
+        <div class="category">
+            <div class="category-title-strip">
+                <span class="icon">⭐</span>
+                <span>PREMIUM SELECTIONS</span>
+            </div>
+            <div class="category-block">
+                <div class="category-heading">House Specialties</div>
+
+                <div class="menu-item" onclick="openModal('buffaloBytes')">
+                    <div class="item-info">
+                        <div class="item-name">Buffalo Bytes Platter</div>
+                        <div class="item-description">Spicy buffalo chicken wings, celery, blue cheese dip</div>
+                    </div>
+                    <div class="item-price">Rs. 945</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('seafoodTuna')">
+                    <div class="item-info">
+                        <div class="item-name">Crispy Tuna Medallion</div>
+                        <div class="item-description">Seared ahi tuna, wasabi mayo, seaweed salad garnish</div>
+                    </div>
+                    <div class="item-price">Rs. 1050</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('chickenQuesadilla')">
+                    <div class="item-info">
+                        <div class="item-name">Chicken Quesadilla Deluxe</div>
+                        <div class="item-description">Grilled cheese tortilla, pulled chicken, jalapeños & sour cream</div>
+                    </div>
+                    <div class="item-price">Rs. 825</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('montealBun')">
+                    <div class="item-info">
+                        <div class="item-name">Montreal Style Burger</div>
+                        <div class="item-description">8oz angus beef, caramelized onions, special sauce & aged cheddar</div>
+                    </div>
+                    <div class="item-price">Rs. 950</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('softCrabBurger')">
+                    <div class="item-info">
+                        <div class="item-name">Soft Shell Crab Burger</div>
+                        <div class="item-description">Panko-crusted crab, remoulade, pickled slaw on brioche</div>
+                    </div>
+                    <div class="item-price">Rs. 1020</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- International Favorites -->
+        <div class="category">
+            <div class="category-title-strip">
+                <span class="icon">🌍</span>
+                <span>INTERNATIONAL FAVORITES</span>
+            </div>
+            <div class="category-block">
+                <div class="category-heading">Global Tastes</div>
+
+                <div class="menu-item" onclick="openModal('mozarellaSticks')">
+                    <div class="item-info">
+                        <div class="item-name">Mozzarella Sticks</div>
+                        <div class="item-description">Golden-fried mozzarella, marinara dip, fresh basil</div>
+                    </div>
+                    <div class="item-price">Rs. 680</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('peroPeriWings')">
+                    <div class="item-info">
+                        <div class="item-name">Peri-Peri Wings</div>
+                        <div class="item-description">Spicy flame-grilled wings, lemon butter sauce</div>
+                    </div>
+                    <div class="item-price">Rs. 775</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('supremeNachos')">
+                    <div class="item-info">
+                        <div class="item-name">Supreme Nachos Loaded</div>
+                        <div class="item-description">Crispy tortilla chips, chicken, cheese, jalapeños, sour cream</div>
+                    </div>
+                    <div class="item-price">Rs. 820</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('crispyTender')">
+                    <div class="item-info">
+                        <div class="item-name">Crispy Chicken Tender</div>
+                        <div class="item-description">Herb-crusted tender strips, crispy fries & garlic aioli</div>
+                    </div>
+                    <div class="item-price">Rs. 750</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('chiliPrawn')">
+                    <div class="item-info">
+                        <div class="item-name">Chili Prawn Stir-fry</div>
+                        <div class="item-description">Wok-tossed prawns, green chili, garlic & spring onions</div>
+                    </div>
+                    <div class="item-price">Rs. 890</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Light & Fresh -->
+        <div class="category">
+            <div class="category-title-strip">
+                <span class="icon">🥗</span>
+                <span>LIGHT & FRESH</span>
+            </div>
+            <div class="category-block">
+                <div class="category-heading">Healthy Choices</div>
+
+                <div class="menu-item" onclick="openModal('edamame')">
+                    <div class="item-info">
+                        <div class="item-name">Steamed Edamame</div>
+                        <div class="item-description">Organic edamame pods, sea salt & sesame seasoning</div>
+                    </div>
+                    <div class="item-price">Rs. 380</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('gyoza')">
+                    <div class="item-info">
+                        <div class="item-name">Pan-Fried Gyoza</div>
+                        <div class="item-description">Japanese pork dumplings, ponzu sauce & ginger</div>
+                    </div>
+                    <div class="item-price">Rs. 620</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('toriKatsu')">
+                    <div class="item-info">
+                        <div class="item-name">Tori Katsu - Chicken Cutlet</div>
+                        <div class="item-description">Panko-breaded chicken, tonkatsu sauce, pickled vegetables</div>
+                    </div>
+                    <div class="item-price">Rs. 810</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('taiKatsu')">
+                    <div class="item-info">
+                        <div class="item-name">Thai Katsu Combo</div>
+                        <div class="item-description">Mixed katsu platter, Thai chili dip, jasmine rice</div>
+                    </div>
+                    <div class="item-price">Rs. 920</div>
+                </div>
+
+                <div class="menu-item" onclick="openModal('cozeySlider')">
+                    <div class="item-info">
+                        <div class="item-name">Angus Slider Trio</div>
+                        <div class="item-description">Three mini burgers, caramelized onions, aged cheddar</div>
+                    </div>
+                    <div class="item-price">Rs. 795</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div><strong>Eggspectation</strong> · Premium Breakfast & Brunch · Lahore</div>
+        <div>QR-ready digital menu · Tap items for details & savor every bite</div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div id="dishModal" class="modal" onclick="if(event.target.id === 'dishModal') closeModal()">
+    <div class="modal-content">
+        <span class="modal-close-btn" onclick="closeModal()">✕</span>
+        <div id="modalImagePlaceholder" class="modal-image-placeholder">
+            <img id="modalImage" src="" alt="Dish Image" style="display:none;">
+            <span id="placeholderText">Picture placeholder · Add your food image here.</span>
+        </div>
+        <h2 id="modalTitle" class="modal-title"></h2>
+        <p id="modalPrice" class="modal-price"></p>
+        <p id="modalDescription" class="modal-description"></p>
+        <p id="modalMeta" class="modal-meta"></p>
+    </div>
+</div>
+
+<script>
+    const dishData = {
+        /* Signature Breakfast */
+        omelette: {
+            title: 'Fluffy Herb Omelette',
+            price: '850',
+            description: 'Three-egg omelette with fresh herbs, premium cheese & black truffle oil. A classic preparation done perfectly.',
+            meta: 'Category: Signature Breakfast · Vegetarian',
+            image: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/9250a909-deb8-4b3d-8421-bd7b78754d19'
+        },
+        pepperonicheese: {
+            title: 'Pepperoni & Cheese Stack',
+            price: '790',
+            description: 'Crispy pepperoni slices, melted mozzarella, fresh tomato & arugula on toasted sourdough bread.',
+            meta: 'Category: Signature Breakfast',
+            image: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/92876c7f-5b7e-4da2-adfb-18244ccb1656'
+        },
+        mushroom: {
+            title: 'Mushroom Medley Scramble',
+            price: '720',
+            description: 'Mixed exotic mushrooms, garlic butter, fresh cream & seasonal herbs. A vegetarian favorite.',
+            meta: 'Category: Signature Breakfast · Vegetarian',
+            image: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/d1841d47-4f88-41a2-be62-fd3ffa7f6f87'
+        },
+        pakostri: {
+            title: 'Pako Stri - Chef\'s Special',
+            price: '880',
+            description: 'Crispy multi-grain toast, caramelized onions, aged cheddar cheese & fresh basil. A house favorite.',
+            meta: 'Category: Signature Breakfast · Chef Favorite',
+            image: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2ae4bd33-fecb-4089-9e53-21b68e226bc9'
+        },
+        bruschetta: {
+            title: 'Bruschetta Parisienne',
+            price: '695',
+            description: 'Artisan Italian bread, heirloom tomatoes, fresh basil pesto & creamy burrata. Light & elegant.',
+            meta: 'Category: Signature Breakfast · Vegetarian',
+            image: 'bruschetta-parisenne.png'
+        },
+
+        /* Premium Selections */
+        buffaloBytes: {
+            title: 'Buffalo Bytes Platter',
+            price: '945',
+            description: 'Spicy flame-grilled chicken wings in buffalo sauce, crispy celery & house-made blue cheese dip.',
+            meta: 'Category: Premium Selection · Spicy',
+            image: 'buffalo-bites.png'
+        },
+        seafoodTuna: {
+            title: 'Crispy Tuna Medallion',
+            price: '1050',
+            description: 'Seared ahi tuna, wasabi mayo, seaweed salad garnish & microgreens. Premium seafood selection.',
+            meta: 'Category: Premium Selection · Seafood',
+            image: 'sockeye-salmon.png'
+        },
+        chickenQuesadilla: {
+            title: 'Chicken Quesadilla Deluxe',
+            price: '825',
+            description: 'Grilled cheese tortilla, pulled chicken, jalapeños, onions, sour cream & chipotle sauce.',
+            meta: 'Category: Premium Selection',
+            image: 'chicken-quasadilla.png'
+        },
+        montealBun: {
+            title: 'Montreal Style Burger',
+            price: '950',
+            description: '8oz angus beef patty, caramelized onions, special sauce, aged cheddar & crispy fries.',
+            meta: 'Category: Premium Selection · House Special',
+            image: 'montreal.png'
+        },
+        softCrabBurger: {
+            title: 'Soft Shell Crab Burger',
+            price: '1020',
+            description: 'Panko-crusted soft shell crab, remoulade, pickled slaw & tomato on buttered brioche bun.',
+            meta: 'Category: Premium Selection · Seafood',
+            image: 'soft-crab-burger.jpg' // if you want to keep using the S3 one, replace with the URL again
+        },
+
+        /* International Favorites */
+        mozarellaSticks: {
+            title: 'Mozzarella Sticks',
+            price: '680',
+            description: 'Golden-fried mozzarella sticks, warm marinara dip & fresh basil. Crispy outside, melty inside.',
+            meta: 'Category: International · Appetizer',
+            image: 'mozzarella-sticks.png'
+        },
+        peroPeriWings: {
+            title: 'Peri-Peri Wings',
+            price: '775',
+            description: 'Flame-grilled chicken wings, spicy peri-peri sauce & lemon butter glaze. Hot & flavorful.',
+            meta: 'Category: International · Spicy',
+            image: 'pero-peri-wings.png'
+        },
+        supremeNachos: {
+            title: 'Supreme Nachos Loaded',
+            price: '820',
+            description: 'Crispy tortilla chips, seasoned chicken, melted cheese, jalapeños, guacamole & sour cream.',
+            meta: 'Category: International · Shareable',
+            image: 'supreme-nachos.png'
+        },
+        crispyTender: {
+            title: 'Crispy Chicken Tender',
+            price: '750',
+            description: 'Herb-crusted chicken tender strips, crispy fries & house garlic aioli.',
+            meta: 'Category: International',
+            image: 'crispy-tender.png'
+        },
+        chiliPrawn: {
+            title: 'Chili Prawn Stir-fry',
+            price: '890',
+            description: 'Wok-tossed prawns, green chili, garlic, spring onions & jasmine rice. Authentic Asian flavors.',
+            meta: 'Category: International · Seafood',
+            image: 'chili-prawn.jpg'
+        },
+
+        /* Light & Fresh */
+        edamame: {
+            title: 'Steamed Edamame',
+            price: '380',
+            description: 'Organic edamame pods, coarse sea salt & sesame seasoning. Healthy & light.',
+            meta: 'Category: Light & Fresh · Vegetarian',
+            image: 'edamame.jpg'
+        },
+        gyoza: {
+            title: 'Pan-Fried Gyoza',
+            price: '620',
+            description: 'Japanese pork dumplings, ponzu sauce, fresh ginger & green onions.',
+            meta: 'Category: Light & Fresh · Japanese',
+            image: 'gyoza.jpg'
+        },
+        toriKatsu: {
+            title: 'Tori Katsu - Chicken Cutlet',
+            price: '810',
+            description: 'Panko-breaded chicken cutlet, tonkatsu sauce, pickled daikon & carrot. Japanese classic.',
+            meta: 'Category: Light & Fresh · Japanese',
+            image: 'tori-katsu.jpg'
+        },
+        taiKatsu: {
+            title: 'Thai Katsu Combo',
+            price: '920',
+            description: 'Mixed katsu platter, Thai chili dip, jasmine rice & vegetable medley.',
+            meta: 'Category: Light & Fresh · Thai',
+            image: 'tai-katsu.jpg'
+        },
+        cozeySlider: {
+            title: 'Angus Slider Trio',
+            price: '795',
+            description: 'Three mini angus beef burgers, caramelized onions, aged cheddar & crispy fries.',
+            meta: 'Category: Light & Fresh · Shareable',
+            image: 'angus-slider.jpg'
+        }
+    };
+
+    function openModal(dishKey) {
+        const dish = dishData[dishKey];
+        if (!dish) return;
+
+        const modalImage = document.getElementById('modalImage');
+        const placeholderText = document.getElementById('placeholderText');
+
+        document.getElementById('modalTitle').textContent = dish.title;
+        document.getElementById('modalPrice').textContent = 'Rs. ' + dish.price;
+        document.getElementById('modalDescription').textContent = dish.description;
+        document.getElementById('modalMeta').textContent = dish.meta + (dish.image ? ' · Picture added.' : ' · Picture coming soon.');
+
+        if (dish.image) {
+            modalImage.src = dish.image;
+            modalImage.style.display = 'block';
+            placeholderText.style.display = 'none';
+        } else {
+            modalImage.style.display = 'none';
+            placeholderText.style.display = 'block';
+        }
+
+        document.getElementById('dishModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('dishModal').classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
+</body>
+</html>
